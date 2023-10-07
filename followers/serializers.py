@@ -5,10 +5,10 @@ from django.db import IntegrityError
 class FollowerSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     followed_name = serializers.ReadOnlyField(source='owner.username')
-
+    
     class Meta:
         model = Follower
-        fields = ['id', 'created_at', 'owner', 'followed']
+        fields = ['id', 'created_at', 'owner', 'followed_name']
 
     def create(self, validated_data):
         try:
