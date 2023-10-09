@@ -3,6 +3,7 @@ from rest_framework import generics, filters
 from react_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class ProfileList(generics.ListAPIView):
@@ -27,6 +28,17 @@ class ProfileList(generics.ListAPIView):
         'owner__followed__created_at',
     ]
 
+    filter_backends = [
+        filters.OrderingFilter,
+        filters.SearchFilter,
+        DjangoFilterBackend,  
+    ]
+
+    filterset_fields = [
+        'owner__followed__owner__profile',
+        'followers__owner__profile',
+        'owner__profile',
+    ]
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
     """
