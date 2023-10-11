@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Like
 from django.db import IntegrityError
 
-
+# Serializer for likes model
 class LiskesSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 

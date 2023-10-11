@@ -3,6 +3,7 @@ from .models import Profile
 from followers.models import Follower
 
 
+# Serializer for profile's model
 class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -18,7 +19,6 @@ class ProfileSerializer(serializers.ModelSerializer):
             following = Follower.objects.filter(
                 owner=user, followed=obj.owner
             ).first()
-            # print(following)
             return following.id if following else None
         return None
 

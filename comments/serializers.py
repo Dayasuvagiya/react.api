@@ -4,10 +4,9 @@ from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    """
-    Serializer for the Comment model
-    Adds three extra fields when returning a list of Comment instances
-    """
+
+# Serializer for the Comment
+    
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
@@ -32,8 +31,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class CommentDetailSerializer(CommentSerializer):
-    """
-    Serializer for the Comment model used in Detail view
-    Post is a read only field so that we dont have to set it on each update
-    """
+
+# Post is for reading only
+
     post = serializers.ReadOnlyField(source='post.id')

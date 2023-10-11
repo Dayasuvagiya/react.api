@@ -3,6 +3,7 @@ from posts.models import Post
 from likes.models import Like
 
 
+# Serializer for post' model
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()

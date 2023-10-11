@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# Model for followers
 class Follower(models.Model):
     owner = models.ForeignKey(
         User, related_name='following', on_delete=models.CASCADE

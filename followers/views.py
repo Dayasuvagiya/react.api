@@ -3,7 +3,7 @@ from react_api.permissions import IsOwnerOrReadOnly
 from followers.models import Follower
 from followers.serializers import FollowerSerializer
 
-
+# Follow while login
 class FollowerList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = FollowerSerializer
@@ -13,6 +13,7 @@ class FollowerList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 
+# Retrieve, Update and delete followers
 class FollowerDetail(generics.RetrieveDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = FollowerSerializer
