@@ -1,7 +1,7 @@
 from rest_framework import generics
 from .models import Item
 from .serializers import ItemSerializer, ItemDetailSerializer
-from garden_diary.permissions import IsOwnerOrReadOnly
+from react_api.permissions import IsOwnerOrReadOnly
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 
