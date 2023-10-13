@@ -47,11 +47,11 @@ REST_AUTH_SERIALIZERS = {
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 #'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-    'localhost', 
+   'localhost', 
     os.environ.get('ALLOWED_HOST'),
     
 ]
@@ -97,6 +97,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
+    'items'
 
 ]
 SITE_ID = 1
