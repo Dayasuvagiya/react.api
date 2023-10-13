@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Recipe(models.Model):
     """
-    Model for posting items.
+    Model for posting Recipes.
     Assigns fields and method for model.
     """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
