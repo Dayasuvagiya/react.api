@@ -13,12 +13,16 @@ class ItemListView(generics.ListCreateAPIView):
     permission_classes = [IsOwnerOrReadOnly]
 
     def get_queryset(self):
-        user = self.request.user
-        return Item.objects.filter(owner=user)
+       user = self.request.user
+       if user.is_anonymous:
+        return Item.objects.none()  # Return an empty queryset for anonymous users
+       return Item.objects.filter(owner=user)
 
     def perform_create(self, serializer):
-        """Save the owner of the item as the current user."""
-        serializer.save(owner=self.request.user)
+      if self.request.user.is_anonymous:
+        # Handle the case of an anonymous user, e.g., return an error response
+        return Response({"detail": "Anonymous users cannot create items."}, status=400)
+
 
 
 class ItemDetailedView(generics.RetrieveUpdateDestroyAPIView):
