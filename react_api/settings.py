@@ -55,14 +55,14 @@ ALLOWED_HOSTS = [
     
 ]
 
-if 'CLIENT_ORIGIN' in os.environ:
+if 'CLIENT_ORIGIN_DEV' in os.environ:
       CORS_ALLOWED_ORIGINS = [
           os.environ.get('CLIENT_ORIGIN_DEV')
     ]
 else:
       CORS_ALLOWED_ORIGIN_REGEXES = [
           r"^https://.*\.gitpod\.io$",
-              'http://localhost:3000',
+        r"^http://localhost:3000$",
 
     ]
       
