@@ -1,20 +1,25 @@
 from rest_framework import generics, permissions
 from react_api.permissions import IsOwnerOrReadOnly
 from likes.models import Like
-from likes.serializers import LiskesSerializer
+from likes.serializers import LikeSerializer
 
 
-# Do Like after login
 class LikeList(generics.ListCreateAPIView):
+    """
+    List likes or create a like if logged in.
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    serializer_class = LiskesSerializer
+    serializer_class = LikeSerializer
     queryset = Like.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-# Retrive, Update and Dislike likes
+
 class LikeDetail(generics.RetrieveDestroyAPIView):
+    """
+    Retrieve a like or delete it by id if you own it.
+    """
     permission_classes = [IsOwnerOrReadOnly]
-    serializer_class = LiskesSerializer
+    serializer_class = LikeSerializer
     queryset = Like.objects.all()

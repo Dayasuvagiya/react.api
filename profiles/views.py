@@ -1,9 +1,9 @@
 from django.db.models import Count
 from rest_framework import generics, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from react_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
-from django_filters.rest_framework import DjangoFilterBackend
 
 
 # List of profiles, create profile handled by django signals
@@ -15,7 +15,12 @@ class ProfileList(generics.ListAPIView):
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
     filter_backends = [
-        filters.OrderingFilter
+        filters.OrderingFilter,
+        DjangoFilterBackend,
+    ]
+    filterset_fields = [
+        'owner__following__followed__profile',
+        'owner__followed__owner__profile',
     ]
     ordering_fields = [
         'posts_count',
@@ -23,18 +28,6 @@ class ProfileList(generics.ListAPIView):
         'following_count',
         'owner__following__created_at',
         'owner__followed__created_at',
-    ]
-
-    filter_backends = [
-        filters.OrderingFilter,
-        filters.SearchFilter,
-        DjangoFilterBackend,  
-    ]
-
-    filterset_fields = [
-        'owner__followed__owner__profile',
-        'followers__owner__profile',
-        'owner__profile',
     ]
 
 
