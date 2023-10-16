@@ -103,15 +103,15 @@ MIDDLEWARE = [
 ]
 
 
-#if 'CLIENT_ORIGIN' in os.environ:
- #   CORS_ALLOWED_ORIGINS = [
-  #      os.environ.get('CLIENT_ORIGIN')
-   # ]
-#else:
- #   CORS_ALLOWED_ORIGIN_REGEXES = [
-  #      r"^https://.*\.gitpod\.io$",
-   #     r"^http://localhost:3000$",
-    #]
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+        os.environ.get('CLIENT_ORIGIN')
+    ]
+else:
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        r"^https://.*\.gitpod\.io$",
+        r"^http://localhost:3000$",
+    ]
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
