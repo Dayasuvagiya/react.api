@@ -110,12 +110,14 @@ if 'CLIENT_ORIGIN' in os.environ:
 else:
     CORS_ALLOWED_ORIGIN_REGEXES = [
         r"^https://.*\.gitpod\.io$",
-        r"^http://localhost:3000$",
+        r"^https://project-react-5-90ce600c5df4.herokuapp.com$",
+        r"^http://localhost:3000$"
     ]
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # Add your frontend's URL here.
+    'http://localhost:3000',
+    'https://project-react-5-90ce600c5df4.herokuapp.com'
 ]  
 
 ROOT_URLCONF = 'react_api.urls'
