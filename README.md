@@ -30,7 +30,7 @@
     - [Manual testing](#manual-testing)
     - [PEP8 Python linter](#pep8-python-linter)
 - [Deployment](#deployment)
-    - [Github & Gitpod](#github--gitpod)
+    - [Github](#github)
     - [Create a Django rest framework project](#create-a-django-rest-framework-project)
     - [ElephantSQL](#elephantsql)
     - [Heroku](#heroku)
@@ -102,25 +102,24 @@ All API endpoints pass manual testing by posting, retrieving, updating and delet
 ## PEP8 python linter
 I used the [Code Institute Python linter](https://pep8ci.herokuapp.com/#) to test all foodies fanclub api. Some errors with too long lines and trailing whitespaces were corrected.
 
-Results from linter can be found **[here](assets/Printscreens)**.
 
 # Deployment
 
-## Github & Gitpod
+## Github
 I created a repository in Github, named it ´react-api´, and used the template [Code-Institute-Org/ci-full-template](https://github.com/Code-Institute-Org/ci-full-template).
 
-- Once the repository is created, click the green button to the right (Gitpod) to open a new Gitpod workspace. 
-- To open and work on the project it is best to open the workspace from Gitpod workspaces (rather than Github), this will open your previous workspace rather than creating a new one. You should pin the workspace. 
+- Once the repository is created, I copy the url and clone the it to VScode workspace. 
+- To open and work on the project it is best to open the workspace from VScode, this will open your previous workspace rather than creating a new one. You should pin the workspace. 
 - Committing changes should be done often and should have clear messages. Use the following commands to make your commits:
     - `git add .`: adds all modified files to a staging area
     - `git commit -m "A message explaining your commit"`: commits all changes to a local repository.
     - `git push`: pushes all your committed changes to your Github repository.
-- While working on the project I used the Gitpod development server to view the website in action. To start the development server run the following command: `Python3 manage.py runserver`. 
+- While working on the project I used the VScode development server to view the website in action. To start the development server run the following command: `Python3 manage.py runserver`. 
 
 ## Create a Django rest framework project
 - Install Django and supporting libraries. I've used Gunicorn, Cloudinary and psycopg2, Pillow and Allauth to start. 
-- In the terminal of the Gitpod workspace type django-admin startproject 'project_name' - project_name is desired project name
-- In the terminal of the Gitpod workspace type python3 manage.py startapp 'app_name' - app_name is desired app name 
+- In the terminal of the VScode workspace type django-admin startproject 'project_name' - project_name is desired project name
+- In the terminal of the VScode workspace type python3 manage.py startapp 'app_name' - app_name is desired app name 
 - Create a Requirements.txt file (type pip3 freeze --local > requirements.txt), a env.py file and Procfile on the top level of the project directory. 
 - In settings.py add the installed apps names into the installed apps array variable and save the file.
 - Move the SECRET KEY to the env.py file, and add the DATABASE URL, ALLOWED_HOST, DEV and CLOUDINARY URL as well. 
